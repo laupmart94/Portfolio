@@ -3,24 +3,27 @@ const root = document.documentElement;          // <html> element
 const btn = document.getElementById('themeToggle');
 const stored = localStorage.getItem('theme');   // 'dark' | 'light' | null
 
-function applyTheme(mode){
-  // Ensure only one class is set at a time
-  root.classList.remove('dark','light');
+function applyTheme(mode) {
+  // Remove old theme classes
+  root.classList.remove('dark', 'light');
   if (mode === 'dark') {
     root.classList.add('dark');
     btn.textContent = '☀️ Light mode';
-    btn.setAttribute('aria-pressed','true');
+    btn.setAttribute('aria-pressed', 'true');
   } else {
     root.classList.add('light');
     btn.textContent = '🌙 Dark mode';
-    btn.setAttribute('aria-pressed','false');
+    btn.setAttribute('aria-pressed', 'false');
   }
 }
 
-// Initial theme: use saved choice or system preference
-applyTheme(stored || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
+// Initial theme (saved or system)
+applyTheme(
+  stored ||
+  (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+);
 
-// Toggle on click + save preference
+// Button click toggles theme
 btn.addEventListener('click', () => {
   const next = root.classList.contains('dark') ? 'light' : 'dark';
   localStorage.setItem('theme', next);
@@ -28,7 +31,7 @@ btn.addEventListener('click', () => {
 });
 
 
-// ===== PROJECT "VIEW DETAILS" BUTTONS (keep this if you had it) =====
+// ===== PROJECT "VIEW DETAILS" BUTTONS =====
 document.querySelectorAll('.details-btn').forEach((button) => {
   button.addEventListener('click', () => {
     const card = button.closest('.project-card');
@@ -41,20 +44,40 @@ document.querySelectorAll('.details-btn').forEach((button) => {
 });
 
 
-// ===== SIMPLE CONTACT FORM VALIDATION (optional) =====
+// ===== CONTACT FORM (Formspree + Custom Success Message) =====
 const form = document.getElementById('contactForm');
 if (form) {
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const name = document.getElementById('name').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const msg = document.getElementById('msg');
-    if (!name || !email) {
-      msg.textContent = 'Please fill in both name and email.';
+  const msg = document.getElementById('msg');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault(); // Prevent redirect
+
+    msg.textContent = 'Sending...';
+    msg.style.color = '';
+
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch(form.action, {
+        method: form.method,
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        msg.textContent = '✅ Thanks, your message has been sent!';
+        msg.style.color = 'seagreen';
+        form.reset();
+
+        // Optional: fade out message after 5 seconds
+        setTimeout(() => { msg.textContent = ''; }, 5000);
+      } else {
+        msg.textContent = '❌ Oops! Something went wrong. Please try again.';
+        msg.style.color = 'crimson';
+      }
+    } catch (error) {
+      msg.textContent = '⚠️ Network error. Please try again later.';
       msg.style.color = 'crimson';
-    } else {
-      msg.textContent = 'Thanks! Your message has been (pretend) sent.';
-      msg.style.color = 'seagreen';
     }
   });
 }

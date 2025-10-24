@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Laura Perez Martinez | Web Designer Portfolio</title>
+  <meta name="description" content="Portfolio of Laura Perez Martinez — entry-level web designer focused on clean, accessible, and responsive sites." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" role="banner">
+    <div class="brand">
+      <h1 class="site-title">Laura Perez Martinez</h1>
+      <p class="tagline">Web Designer · HTML · CSS · JavaScript</p>
+    </div>
+    <nav class="topnav" aria-label="Primary">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+      <button id="themeToggle" aria-pressed="false" class="btn">🌙 Dark mode</button>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section id="about" class="section">
+      <h2>About Me</h2>
+      <p>I’m a U.S. Army Reserve member and Cybersecurity student at Wilmington University developing skills in web design, front-end development, and digital security. My recent web design coursework introduced me to HTML, CSS, and JavaScript, where I discovered how much I enjoy combining creativity with code. I’m currently building projects that focus on responsive layouts, accessibility, and modern design practices—aiming to start a career in web design or front-end development. Always open to connecting with other designers, developers, and tech professionals.</p>
+    </section>
+
+    <section id="projects" class="section">
+      <h2>Projects</h2>
+      <div class="project-grid">
+        <article class="project-card">
+          <h3>Vacation Experience</h3>
+          <p>Semantic HTML travel page highlighting my favorite city (Dallas). Includes accessible figures, captions, and external links.</p>
+          <p class="more" hidden>
+            Built with clean structure, descriptive alt text, and attention to usability. Deployed on Replit.
+          </p>
+          <div class="actions">
+            <a class="btn" href="https://bestvacations.replit.app/" target="_blank" rel="noopener">View Project</a>
+            <button class="details-btn btn-outline" aria-expanded="false">View details</button>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <h3>Portfolio Interactions</h3>
+          <p>Demonstrates a dark-mode toggle with saved preference, and expandable project details using vanilla JavaScript.</p>
+          <p class="more" hidden>
+            Uses localStorage to persist theme, manages aria-pressed/expanded for accessibility, and keeps code simple.
+          </p>
+          <div class="actions">
+            <a class="btn" href="#" aria-disabled="true">Live (this page)</a>
+            <button class="details-btn btn-outline" aria-expanded="false">View details</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="skills" class="section">
+      <h2>Skills</h2>
+      <ul class="skills">
+        <li>HTML5 (semantic structure, accessibility)</li>
+        <li>CSS3 (responsive layouts, typography)</li>
+        <li>JavaScript (DOM, events, localStorage)</li>
+        <li>Tools: Replit, GitHub, VS Code</li>
+        <li>Bonus: Basic Java (console apps)</li>
+      </ul>
+    </section>
+
+    <section id="contact" class="section">
+      <h2>Contact</h2>
+      <form id="contactForm" novalidate>
+        <label>Name
+          <input type="text" id="name" placeholder="Your name" required>
+        </label>
+        <label>Email
+          <input type="email" id="email" placeholder="you@example.com" required>
+        </label>
+        <button type="submit" class="btn">Send</button>
+        <p id="msg" class="form-msg" aria-live="polite"></p>
+      </form>
+      <ul class="links">
+        <li>Email: <a href="mailto:laupmart94@gmail.com">laupmart94@gmail.com</a></li>
+        <li>LinkedIn: <a href="https://www.linkedin.com/in/perezmartinezlaura/" target="_blank" rel="noopener">linkedin.com/in/perezmartinezlaura/</a></li>
+        <li>GitHub: <a href="#" target="_blank" rel="noopener">github.com/yourusername</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2025 Laura Perez Martinez. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

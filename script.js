@@ -1,48 +1,60 @@
-/* Theme toggle with persistence */
-const root = document.documentElement;
-const toggle = document.getElementById('themeToggle');
-const stored = localStorage.getItem('theme');
+// ===== THEME TOGGLE =====
+const root = document.documentElement;          // <html> element
+const btn = document.getElementById('themeToggle');
+const stored = localStorage.getItem('theme');   // 'dark' | 'light' | null
+
 function applyTheme(mode){
-  if(mode==='dark'){
+  // Ensure only one class is set at a time
+  root.classList.remove('dark','light');
+  if (mode === 'dark') {
     root.classList.add('dark');
-    toggle.textContent = '☀️ Light mode';
-    toggle.setAttribute('aria-pressed','true');
-  }else{
-    root.classList.remove('dark');
-    toggle.textContent = '🌙 Dark mode';
-    toggle.setAttribute('aria-pressed','false');
+    btn.textContent = '☀️ Light mode';
+    btn.setAttribute('aria-pressed','true');
+  } else {
+    root.classList.add('light');
+    btn.textContent = '🌙 Dark mode';
+    btn.setAttribute('aria-pressed','false');
   }
 }
+
+// Initial theme: use saved choice or system preference
 applyTheme(stored || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
-toggle.addEventListener('click',()=>{
-  const isDark = root.classList.toggle('dark');
-  localStorage.setItem('theme', isDark ? 'dark' : 'light');
-  applyTheme(isDark ? 'dark' : 'light');
+
+// Toggle on click + save preference
+btn.addEventListener('click', () => {
+  const next = root.classList.contains('dark') ? 'light' : 'dark';
+  localStorage.setItem('theme', next);
+  applyTheme(next);
 });
 
-/* Expand/collapse project details */
-document.querySelectorAll('.details-btn').forEach(btn=>{
-  btn.addEventListener('click',()=>{
-    const card = btn.closest('.project-card');
+
+// ===== PROJECT "VIEW DETAILS" BUTTONS (keep this if you had it) =====
+document.querySelectorAll('.details-btn').forEach((button) => {
+  button.addEventListener('click', () => {
+    const card = button.closest('.project-card');
     const more = card.querySelector('.more');
-    const expanded = btn.getAttribute('aria-expanded') === 'true';
-    btn.setAttribute('aria-expanded', String(!expanded));
+    const expanded = button.getAttribute('aria-expanded') === 'true';
+    button.setAttribute('aria-expanded', String(!expanded));
     more.hidden = expanded;
-    btn.textContent = expanded ? 'View details' : 'Hide details';
+    button.textContent = expanded ? 'View details' : 'Hide details';
   });
 });
 
-/* Simple contact form validation */
-document.getElementById('contactForm').addEventListener('submit', (e)=>{
-  e.preventDefault();
-  const name = document.getElementById('name').value.trim();
-  const email = document.getElementById('email').value.trim();
-  const msg = document.getElementById('msg');
-  if(!name || !email){
-    msg.textContent = 'Please fill in both name and email.';
-    msg.style.color = 'crimson';
-    return;
-  }
-  msg.textContent = 'Thanks! Your message has been (pretend) sent.';
-  msg.style.color = 'seagreen';
-});
+
+// ===== SIMPLE CONTACT FORM VALIDATION (optional) =====
+const form = document.getElementById('contactForm');
+if (form) {
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const msg = document.getElementById('msg');
+    if (!name || !email) {
+      msg.textContent = 'Please fill in both name and email.';
+      msg.style.color = 'crimson';
+    } else {
+      msg.textContent = 'Thanks! Your message has been (pretend) sent.';
+      msg.style.color = 'seagreen';
+    }
+  });
+}

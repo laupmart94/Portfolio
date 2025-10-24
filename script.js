@@ -1,10 +1,9 @@
 // ===== THEME TOGGLE =====
-const root = document.documentElement;          // <html> element
+const root = document.documentElement;
 const btn = document.getElementById('themeToggle');
-const stored = localStorage.getItem('theme');   // 'dark' | 'light' | null
+const stored = localStorage.getItem('theme');
 
 function applyTheme(mode) {
-  // Remove old theme classes
   root.classList.remove('dark', 'light');
   if (mode === 'dark') {
     root.classList.add('dark');
@@ -17,13 +16,8 @@ function applyTheme(mode) {
   }
 }
 
-// Initial theme (saved or system)
-applyTheme(
-  stored ||
-  (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
-);
+applyTheme(stored || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
 
-// Button click toggles theme
 btn.addEventListener('click', () => {
   const next = root.classList.contains('dark') ? 'light' : 'dark';
   localStorage.setItem('theme', next);
@@ -50,8 +44,7 @@ if (form) {
   const msg = document.getElementById('msg');
 
   form.addEventListener('submit', async (e) => {
-    e.preventDefault(); // Prevent redirect
-
+    e.preventDefault();
     msg.textContent = 'Sending...';
     msg.style.color = '';
 
@@ -69,7 +62,7 @@ if (form) {
         msg.style.color = 'seagreen';
         form.reset();
 
-        // Optional: fade out message after 5 seconds
+        // Optional: clear message after 5 seconds
         setTimeout(() => { msg.textContent = ''; }, 5000);
       } else {
         msg.textContent = '❌ Oops! Something went wrong. Please try again.';

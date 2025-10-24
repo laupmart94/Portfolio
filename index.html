@@ -21,7 +21,7 @@
       <a href="#projects">Projects</a>
       <a href="#skills">Skills</a>
       <a href="#contact">Contact</a>
-      <!-- 🌙 This is the dark-mode toggle button -->
+      <!-- 🌙 Dark mode toggle -->
       <button id="themeToggle" aria-pressed="false" class="btn">🌙 Dark mode</button>
     </nav>
   </header>
@@ -74,20 +74,26 @@
 
     <section id="contact" class="section">
       <h2>Contact</h2>
-      <form id="contactForm" novalidate>
+
+      <!-- ✅ REAL Formspree form -->
+      <form id="contactForm" action="https://formspree.io/f/xpwyvoeo" method="POST">
         <label>Name
-          <input type="text" id="name" placeholder="Your name" required>
+          <input type="text" id="name" name="name" placeholder="Your name" required>
         </label>
         <label>Email
-          <input type="email" id="email" placeholder="you@example.com" required>
+          <input type="email" id="email" name="email" placeholder="you@example.com" required>
         </label>
+        <label>Message
+          <textarea name="message" placeholder="Your message" required></textarea>
+        </label>
+        <input type="hidden" name="_subject" value="Portfolio Contact Message">
         <button type="submit" class="btn">Send</button>
         <p id="msg" class="form-msg" aria-live="polite"></p>
       </form>
 
       <ul class="links">
         <li>Email: <a href="mailto:laupmart94@gmail.com">laupmart94@gmail.com</a></li>
-        <li>LinkedIn: <a href="https://www.linkedin.com/in/perezmartinezlaura/" target="_blank" rel="noopener">www.linkedin.com/in/perezmartinezlaura/</a></li>
+        <li>LinkedIn: <a href="https://www.linkedin.com/in/perezmartinezlaura/" target="_blank" rel="noopener">linkedin.com/in/perezmartinezlaura/</a></li>
         <li>GitHub: <a href="https://github.com/laupmart94" target="_blank" rel="noopener">github.com/laupmart94</a></li>
       </ul>
     </section>
@@ -97,8 +103,7 @@
     <p>&copy; 2025 Laura Perez Martinez. All rights reserved.</p>
   </footer>
 
-  <!-- 👇 This script line MUST be right before </body> -->
+  <!-- 👇 Must be right before </body> -->
   <script src="script.js"></script>
 </body>
 </html>
-

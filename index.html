@@ -9,16 +9,19 @@
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
+
   <header class="site-header" role="banner">
     <div class="brand">
       <h1 class="site-title">Laura Perez Martinez</h1>
       <p class="tagline">Web Designer · HTML · CSS · JavaScript</p>
     </div>
+
     <nav class="topnav" aria-label="Primary">
       <a href="#about">About</a>
       <a href="#projects">Projects</a>
       <a href="#skills">Skills</a>
       <a href="#contact">Contact</a>
+      <!-- 🌙 This is the dark-mode toggle button -->
       <button id="themeToggle" aria-pressed="false" class="btn">🌙 Dark mode</button>
     </nav>
   </header>
@@ -26,7 +29,7 @@
   <main id="main">
     <section id="about" class="section">
       <h2>About Me</h2>
-      <p>I’m a U.S. Army Reserve member and Cybersecurity student at Wilmington University, developing skills in web design, front-end development, and digital security. My recent web design coursework introduced me to HTML, CSS, and JavaScript, where I discovered how much I enjoy combining creativity with code. I’m currently building projects that focus on responsive layouts, accessibility, and modern design practices—aiming to start a career in web design or front-end development. Always open to connecting with other designers, developers, and tech professionals.</p>
+      <p>I’m a U.S. Army Reserve member and Cybersecurity student at Wilmington University developing skills in web design, front-end development, and digital security. My recent web design coursework introduced me to HTML, CSS, and JavaScript, where I discovered how much I enjoy combining creativity with code. I’m currently building projects that focus on responsive layouts, accessibility, and modern design practices—aiming to start a career in web design or front-end development. Always open to connecting with other designers, developers, and tech professionals.</p>
     </section>
 
     <section id="projects" class="section">
@@ -48,7 +51,7 @@
           <h3>Portfolio Interactions</h3>
           <p>Demonstrates a dark-mode toggle with saved preference, and expandable project details using vanilla JavaScript.</p>
           <p class="more" hidden>
-            Uses localStorage to persist the theme, manages aria-pressed/aria-expanded for accessibility, and keeps the code simple.
+            Uses localStorage to persist theme, manages aria-pressed/expanded for accessibility, and keeps code simple.
           </p>
           <div class="actions">
             <a class="btn" href="#" aria-disabled="true">Live (this page)</a>
@@ -81,10 +84,11 @@
         <button type="submit" class="btn">Send</button>
         <p id="msg" class="form-msg" aria-live="polite"></p>
       </form>
+
       <ul class="links">
         <li>Email: <a href="mailto:laupmart94@gmail.com">laupmart94@gmail.com</a></li>
-        <li>LinkedIn: <a href="https://www.linkedin.com/in/perezmartinezlaura/" target="_blank" rel="noopener">linkedin.com/in/perezmartinezlaura/</a></li>
-        <li>GitHub: <a href="#" target="_blank" rel="noopener">github.com/yourusername</a></li>
+        <li>LinkedIn: <a href="https://www.linkedin.com/in/perezmartinezlaura/" target="_blank" rel="noopener">www.linkedin.com/in/perezmartinezlaura/</a></li>
+        <li>GitHub: <a href="https://github.com/laupmart94" target="_blank" rel="noopener">github.com/laupmart94</a></li>
       </ul>
     </section>
   </main>
@@ -93,6 +97,8 @@
     <p>&copy; 2025 Laura Perez Martinez. All rights reserved.</p>
   </footer>
 
+  <!-- 👇 This script line MUST be right before </body> -->
   <script src="script.js"></script>
 </body>
 </html>
+
